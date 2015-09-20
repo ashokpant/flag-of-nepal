@@ -51,7 +51,7 @@ The national flag of Nepal (Fig. 1) is the most mathematical and world's only no
 	>> baseLength = 920;
 	>> drawingMode = 'alldrawings';
 	>> flagOfNepal(baseLength,drawingMode)
-![Fig.4 Flag of Nepal with all the drawings.](https://github.com/ashokpant/flag-of-nepal/blob/master/images/flag_of_nepal_alldrawings.gif)
+![Fig.4 Flag of Nepal with all the drawings.](https://github.com/ashokpant/flag-of-nepal/blob/master/images/flag_of_nepal_alldrawings.png)
 
 ### Flag - step-by-step (animated)
 	>> baseLength = 920;
