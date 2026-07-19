@@ -2,62 +2,36 @@
 Title:       |  Flag of Nepal
 Subtitle:    |  The most mathematical flag in the world
 Project:     |  nepali_national_flag
-Author:      Ashok Kumar Pant 
-Affiliation: Tribhuvan University, Kathmandu 
+Author:      Ashok Kumar Pant
+Affiliation: Tribhuvan University, Kathmandu
 Web:         http://ashokpant.github.io
-Date:        September 20, 2015 
+Date:        September 20, 2015
+Update:      July 19, 2026
 -->
 
 ## **National Flag of Nepal** (*The most mathematical flag in the world*)
 The national flag of Nepal (Fig. 1) is the most mathematical and world's only non-quadrilateral flag. It consists of two juxtaposed triangular architecture with a white emblem of the crescent moon having eight rays visible out of sixteen in the upper triangle and a white emblem of a twelve-rayed sun in the lower triangle. The flag is bordered with a deep blue color representing the peace and harmony, and rectangles are filled with crimson red (the color of rhododendron- Nepal's national flower) representing the victory and bravery. The two triangles symbolized the Himalayan Mountains; the moon represents the serenity of the Nepalese people and the shade and cool weather in the Himalayas, while the sun stands for the fierce tenacity of the Nepalese people, and, the heat and higher temperatures of the lower parts of Nepal. The moon and the sun are also said to express the hope that the nation will endure as long as these heavenly bodies. This modern architecture of the flag was come into existence after December 16, 1962. Before that, the sun and the crescent moon had human faces.
 
 
-## Prerequisites
-* [MATLAB](http://www.mathworks.com/products/matlab/)
-* [geom2d](http://www.mathworks.com/matlabcentral/fileexchange/7844-geom2d)
+## Implementations
 
+| Language | Path 
+|----------|----------
+| **MATLAB** | [matlab/]
+| **Python** | [python/]
 
-## Installation
-	$ git clone https://github.com/ashokpant/flag-of-nepal.git
-	$ cd flag-of-nepal
-	Add *geom2d-2015.05.13* to matlab search path.
+See **[matlab/README.md](matlab/README.md)** and **[python/README.md](python/README.md)** for setup and usage. Modes in both: `color`, `skeleton`, `landmark`.
 
-## Examples
+### Quick start (MATLAB)
+	>> cd matlab
+	>> flagOfNepal
+	>> flagOfNepal(920, 'skeleton')
+	>> flagOfNepal(920, 'landmark')
 
-### Flag of Nepal
-	>> flagOfNepal();
-	>> OR
-	>> baseLength = 920;
-	>> flagOfNepal(baseLength);
-	>> OR
-	>> baseLength = 920;
-	>> drawingMode = 'fillcolor';
-	>> flagOfNepal(baseLength,drawingMode)
+### Quick start (Python)
+	$ cd python && make build
+
 ![Fig.1 The national flag of Nepal.](https://github.com/ashokpant/flag-of-nepal/blob/master/images/flag_of_nepal.png)
-
-### Skeleton of the flag
-	>> baseLength = 920;
-	>> drawingMode = 'skeleton';
-	>> flagOfNepal(baseLength,drawingMode)
-![Fig.2 Skeleton of the flag.](https://github.com/ashokpant/flag-of-nepal/blob/master/images/flag_of_nepal_skeleton.png)
-
-### Flag with the landmarks
-	>> baseLength = 920;
-	>> drawingMode = 'landmarks';
-	>> flagOfNepal(baseLength,drawingMode)
-![Fig.3 Flag of Nepal with the landmarks.](https://github.com/ashokpant/flag-of-nepal/blob/master/images/flag_of_nepal_landmarks.png)
-
-### Flag with all the imaganary drawings
-	>> baseLength = 920;
-	>> drawingMode = 'alldrawings';
-	>> flagOfNepal(baseLength,drawingMode)
-![Fig.4 Flag of Nepal with all the drawings.](https://github.com/ashokpant/flag-of-nepal/blob/master/images/flag_of_nepal_alldrawings.png)
-
-### Flag - step-by-step (animated)
-	>> baseLength = 920;
-	>> drawingMode = 'animate';
-	>> flagOfNepal(baseLength,drawingMode)
-![Fig.5 Flag of Nepal - step-by-step.](https://github.com/ashokpant/flag-of-nepal/blob/master/images/flag_of_nepal_alldrawings.gif)
 
 ## Flag drawing procedure
 From the Constitution of Nepal, Schedule 1, Article 8, adopted on September 20, 2015 (Asoj 3, 2072).
@@ -101,5 +75,3 @@ From the Constitution of Nepal, Schedule 1, Article 8, adopted on September 20, 
 4. http://0xc.de/flags/nepal/
 5. https://www.youtube.com/watch?v=f2Gne3UHKHs
 
-
---- Last Update : September 20, 2015

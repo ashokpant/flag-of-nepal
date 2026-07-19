@@ -1,0 +1,21 @@
+[project]
+name = "flag-of-nepal"
+version = "1.0.0"
+description = "Construct and export the National Flag of Nepal from its constitutional geometry."
+authors = [
+    { name = "Ashok Kumar Pant", email = "asokpant@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = []
+readme = "README.md"
+license = { text = "MIT" }
+
+[project.scripts]
+flag-of-nepal = "flag_of_nepal.__main__:main"
+
+[build-system]
+requires = ["uv_build>=0.10.4,<0.11.0"]
+build-backend = "uv_build"
+
+[tool.uv]
+package = true
