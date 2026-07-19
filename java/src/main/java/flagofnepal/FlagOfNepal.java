@@ -11,7 +11,11 @@ import java.util.Locale;
 import java.util.Map;
 
 /**
- * Author: Ashok Kumar Pant <asokpant@gmail.com>
+ * National Flag of Nepal — constitutional geometry (Schedule 1, Article 8).
+ * Build and Use:
+ * javac FlagOfNepal.java
+ * java FlagOfNepal [baseLength] [outputDir]
+ * Author: Ashok Pant <asokpant@gmail.com>
  * Date: July 19, 2026
  */
 public final class FlagOfNepal {
@@ -21,9 +25,10 @@ public final class FlagOfNepal {
     private static final String WHITE = "#FFFFFF";
     private static final String INK = "#111111";
     private static final String IMAGINARY = "#888888";
-    private static final String[] MODES = {"color", "skeleton", "landmark"};
+    private static final String[] MODES = { "color", "skeleton", "landmark" };
 
-    private FlagOfNepal() {}
+    private FlagOfNepal() {
+    }
 
     static final class Pt {
         final double x, y;
@@ -91,7 +96,7 @@ public final class FlagOfNepal {
                 maxY = Math.max(maxY, p.y);
             }
             double pad = borderWidth > 0 ? borderWidth * 0.5 : baseLength * 0.02;
-            return new double[] {minX - pad, minY - pad, maxX + pad, maxY + pad};
+            return new double[] { minX - pad, minY - pad, maxX + pad, maxY + pad };
         }
     }
 
@@ -108,8 +113,8 @@ public final class FlagOfNepal {
         double len = Math.hypot(dx, dy);
         double nx = dy / len, ny = -dx / len;
         return new Pt[] {
-            new Pt(a.x + d * nx, a.y + d * ny),
-            new Pt(b.x + d * nx, b.y + d * ny)
+                new Pt(a.x + d * nx, a.y + d * ny),
+                new Pt(b.x + d * nx, b.y + d * ny)
         };
     }
 
@@ -140,8 +145,8 @@ public final class FlagOfNepal {
         double u1 = (-b - sqrtD) / (2 * a);
         double u2 = (-b + sqrtD) / (2 * a);
         return new Pt[] {
-            new Pt(origin.x + u1 * dir.x, origin.y + u1 * dir.y),
-            new Pt(origin.x + u2 * dir.x, origin.y + u2 * dir.y)
+                new Pt(origin.x + u1 * dir.x, origin.y + u1 * dir.y),
+                new Pt(origin.x + u2 * dir.x, origin.y + u2 * dir.y)
         };
     }
 
@@ -157,8 +162,8 @@ public final class FlagOfNepal {
         double dx = c2.x - c1.x, dy = c2.y - c1.y;
         double rx = -dy * (h / d), ry = dx * (h / d);
         return new Pt[] {
-            new Pt(mid.x + rx, mid.y + ry),
-            new Pt(mid.x - rx, mid.y - ry)
+                new Pt(mid.x + rx, mid.y + ry),
+                new Pt(mid.x - rx, mid.y - ry)
         };
     }
 
@@ -237,14 +242,30 @@ public final class FlagOfNepal {
         double borderWidth = dist(T, N);
         Geom g = new Geom(b, borderWidth);
 
-        g.points.put("A", A); g.points.put("B", B); g.points.put("C", C);
-        g.points.put("D", D); g.points.put("E", E); g.points.put("F", F);
-        g.points.put("G", G); g.points.put("H", H); g.points.put("I", I);
-        g.points.put("J", J); g.points.put("K", K); g.points.put("L", L);
-        g.points.put("M", M); g.points.put("N", N); g.points.put("O", O);
-        g.points.put("O1", O1); g.points.put("P", P); g.points.put("Q", Q);
-        g.points.put("R", R); g.points.put("S", S); g.points.put("T", T);
-        g.points.put("U", U); g.points.put("V", V); g.points.put("W", W);
+        g.points.put("A", A);
+        g.points.put("B", B);
+        g.points.put("C", C);
+        g.points.put("D", D);
+        g.points.put("E", E);
+        g.points.put("F", F);
+        g.points.put("G", G);
+        g.points.put("H", H);
+        g.points.put("I", I);
+        g.points.put("J", J);
+        g.points.put("K", K);
+        g.points.put("L", L);
+        g.points.put("M", M);
+        g.points.put("N", N);
+        g.points.put("O", O);
+        g.points.put("O1", O1);
+        g.points.put("P", P);
+        g.points.put("Q", Q);
+        g.points.put("R", R);
+        g.points.put("S", S);
+        g.points.put("T", T);
+        g.points.put("U", U);
+        g.points.put("V", V);
+        g.points.put("W", W);
 
         g.inner.addAll(List.of(A, B, E, G, C));
 
@@ -267,7 +288,7 @@ public final class FlagOfNepal {
 
         addMoonRays(g, xu, xl);
 
-        int[] sunOrder = {1, 4, 3, 8, 5, 12, 7, 16, 9, 20, 11, 24, 13, 28, 15, 32, 17, 36, 19, 40, 21, 44, 23, 0};
+        int[] sunOrder = { 1, 4, 3, 8, 5, 12, 7, 16, 9, 20, 11, 24, 13, 28, 15, 32, 17, 36, 19, 40, 21, 44, 23, 0 };
         for (int i = 0; i < sunOrder.length; i += 2) {
             g.sun.add(pi.get(sunOrder[i]));
             g.sun.add(po.get(sunOrder[i + 1]));
@@ -308,8 +329,8 @@ public final class FlagOfNepal {
         g.arcs.put("moon_upper", new Arc(T, radiusTU, 180, -180));
         g.arcs.put("moon_lower", new Arc(T, radiusTL, 195, -210));
         g.arcs.put("n_arc", new Arc(N, radiusN, 180, -180));
-        g.circles.put("sun_inner", new double[] {W.x, W.y, radiusWI});
-        g.circles.put("sun_outer", new double[] {W.x, W.y, radiusWO});
+        g.circles.put("sun_inner", new double[] { W.x, W.y, radiusWI });
+        g.circles.put("sun_outer", new double[] { W.x, W.y, radiusWO });
 
         g.imaginary.add(new Edge(H, I));
         g.imaginary.add(new Edge(J, K));
@@ -495,7 +516,7 @@ public final class FlagOfNepal {
     }
 
     static String toHtml(Geom g) {
-        String[] titles = {"Colour flag", "Skeleton", "Landmarks"};
+        String[] titles = { "Colour flag", "Skeleton", "Landmarks" };
         StringBuilder body = new StringBuilder();
         for (int i = 0; i < MODES.length; i++) {
             String svg = toSvg(g, MODES[i]);
@@ -526,7 +547,6 @@ public final class FlagOfNepal {
                 + body
                 + "  </main>\n</body>\n</html>\n";
     }
-
 
     public static void main(String[] args) throws IOException {
         double base = args.length > 0 ? Double.parseDouble(args[0]) : 800.0;
