@@ -1,5 +1,5 @@
-// National Flag of Nepal — browser geometry module (Schedule 1, Article 8).
-// Used by demo/index.html on GitHub Pages.
+// Author: Ashok Kumar Pant <asokpant@gmail.com>
+// Date: July 19, 2026
 
 const crimson = "#DC143C";
 const deepBlue = "#003893";
@@ -111,7 +111,7 @@ function circlePolygon(c, r, n) {
   return pts;
 }
 
-function construct(b) {
+export function construct(b) {
   const A = { x: 0, y: 0 };
   const B = { x: b, y: 0 };
   const C = { x: 0, y: b + b / 3 };
@@ -408,7 +408,7 @@ function writeArc(b, a, flip, color, width, dash) {
   b.push(s + " />\n");
 }
 
-function toSVG(g, mode) {
+export function toSVG(g, mode) {
   const { minX, minY, maxX, maxY } = bounds(g);
   const flip = maxY;
   const w = maxX - minX;
@@ -519,18 +519,41 @@ function toSVG(g, mode) {
   return parts.join("");
 }
 
-/** Inline SVG fragment (no XML declaration) for embedding in the page. */
-export function renderFlag(baseLength = 800, mode = "color") {
-  let m = String(mode).toLowerCase();
-  if (m === "fillcolor" || m === "colour") m = "color";
-  if (m === "landmarks" || m === "alldrawings") m = "landmark";
-  if (!MODES.includes(m)) m = "color";
-  const base = Number(baseLength);
-  const g = construct(Number.isFinite(base) && base > 0 ? base : 800);
-  let svg = toSVG(g, m);
-  if (svg.startsWith("<?xml")) {
-    const idx = svg.indexOf("\n");
-    if (idx >= 0) svg = svg.slice(idx + 1);
+export function toHTML(g) {
+  const titles = ["Colour flag", "Skeleton", "Landmarks"];
+  let body = "";
+  for (let i = 0; i < MODES.length; i++) {
+    let svg = toSVG(g, MODES[i]);
+    if (svg.startsWith("<?xml")) {
+      const idx = svg.indexOf("\n");
+      if (idx >= 0) svg = svg.slice(idx + 1);
+    }
+    body += `    <section class="flag">\n      <h2>${titles[i]}</h2>\n`;
+    body += svg;
+    body += "    </section>\n\n";
   }
-  return { svg, geom: g, mode: m };
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>National Flag of Nepal</title>
+  <style>
+    body { margin: 0; font-family: Georgia, serif; background: #f6f4f1; color: #1a1a1a; }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1.25rem 3rem; }
+    h1 { font-weight: 400; }
+    .meta { color: #555; margin: 0 0 2rem; }
+    .flag { background: #fff; padding: 1.25rem 1.5rem 1.75rem; margin-bottom: 1.5rem; }
+    .flag h2 { font-weight: 400; font-size: 1.15rem; margin: 0 0 1rem; }
+    .flag svg { width: 100%; height: auto; display: block; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>National Flag of Nepal</h1>
+    <p class="meta">Base length AB = ${g.baseLength.toFixed(0)} · Border width TN = ${g.borderWidth.toFixed(4)} · Constitution of Nepal, Schedule 1, Article 8</p>
+${body}  </main>
+</body>
+</html>
+`;
 }

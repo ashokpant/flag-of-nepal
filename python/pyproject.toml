@@ -1,7 +1,7 @@
 [project]
 name = "flag-of-nepal"
 version = "1.0.0"
-description = "Construct and export the National Flag of Nepal from its constitutional geometry."
+description = "National Flag of Nepal (Schedule 1, Article 8)."
 authors = [
     { name = "Ashok Kumar Pant", email = "asokpant@gmail.com" }
 ]

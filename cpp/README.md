@@ -1,10 +1,12 @@
 # National Flag of Nepal (C++)
 
-Pure C++17 construction of Nepal's national flag from the constitutional geometry (Schedule 1, Article 8).
+The most mathematical flag in the world.
+
+Constitution of Nepal, Schedule 1, Article 8.
 
 ## Setup
 
-C++17 compiler (g++ or clang++).
+C++17 and CMake 3.16+.
 
 ```bash
 cd cpp
@@ -14,24 +16,18 @@ make run
 ## Usage
 
 ```bash
-make run              # base 800 → output/
+make run
 make run BASE=920
-make build            # compile to bin/flag-of-nepal
+make build
 make clean
 ```
 
-Or:
-
 ```bash
-./bin/flag-of-nepal [baseLength] [outputDir]
+cmake -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build
+./build/flag-of-nepal [baseLength] [outputDir]
 ```
 
-Writes:
-
-- `np_flag_color.svg`
-- `np_flag_skeleton.svg`
-- `np_flag_landmark.svg`
-- `np_flag.html`
+Writes `np_flag_color.svg`, `np_flag_skeleton.svg`, `np_flag_landmark.svg`, and `np_flag.html`.
 
 ### Modes
 

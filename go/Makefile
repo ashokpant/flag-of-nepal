@@ -7,18 +7,19 @@ OUTDIR  ?= output
 .PHONY: help build run all clean
 
 help:
-	@grep -E '^[a-zA-Z_-]+:.*?##' $(MAKEFILE_LIST) | \
-		awk 'BEGIN {FS = ":.*?## "}; {printf "  %-10s %s\n", $$1, $$2}'
+	@echo "build run all clean"
 
 build:
-	$(GO) build -o bin/flag-of-nepal .
+	mkdir -p bin
+	$(GO) build -o bin/flag-of-nepal ./cmd/flag-of-nepal
 
-run: ## Build flag SVGs + HTML into OUTDIR
-	$(GO) run . $(BASE) $(OUTDIR)
+run:
+	$(GO) run ./cmd/flag-of-nepal $(BASE) $(OUTDIR)
 
 all: run
 
-clean: 
+clean:
 	rm -rf bin/
 	rm -rf $(OUTDIR)/*
+	mkdir -p $(OUTDIR)
 	touch $(OUTDIR)/.gitkeep

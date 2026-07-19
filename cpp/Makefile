@@ -1,24 +1,24 @@
-CXX ?= g++
-CXXFLAGS ?= -std=c++17 -O2
-BASE ?= 800
-OUTDIR ?= output
+# National Flag of Nepal
 
-.PHONY: build run all clean help
+BASE    ?= 800
+OUTDIR  ?= output
 
-build: bin/flag-of-nepal
-
-bin/flag-of-nepal: main.cpp
-	mkdir -p bin && $(CXX) $(CXXFLAGS) -o $@ main.cpp
-
-run: build
-	./bin/flag-of-nepal $(BASE) $(OUTDIR)
-
-all: build run
-
-clean:
-	rm -rf bin
+.PHONY: help build run all clean
 
 help:
-	@echo "make build   — compile to bin/flag-of-nepal"
-	@echo "make run     — build and write SVG/HTML to $(OUTDIR)/ (BASE=$(BASE))"
-	@echo "make clean   — remove bin/"
+	@echo "build run all clean"
+
+build:
+	cmake -B build -DCMAKE_BUILD_TYPE=Release
+	cmake --build build
+
+run: build
+	./build/flag-of-nepal $(BASE) $(OUTDIR)
+
+all: run
+
+clean:
+	rm -rf build bin
+	rm -rf $(OUTDIR)/*
+	mkdir -p $(OUTDIR)
+	touch $(OUTDIR)/.gitkeep

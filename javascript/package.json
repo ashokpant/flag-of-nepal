@@ -1,0 +1,9 @@
+{
+  "name": "npflag",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "bin": { "flag-of-nepal": "./bin/flag-of-nepal.mjs" },
+  "exports": { ".": "./src/npflag.mjs" },
+  "engines": { "node": ">=18" }
+}

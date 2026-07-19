@@ -4,26 +4,26 @@ JAVAC   ?= javac
 JAVA    ?= java
 BASE    ?= 800
 OUTDIR  ?= output
-SRC     = FlagOfNepal.java
-CLASS   = FlagOfNepal.class
+SRC     = src/main/java/flagofnepal/FlagOfNepal.java
+OUT     = out
 
 .PHONY: help build run all clean
 
 help:
-	@grep -E '^[a-zA-Z_-]+:.*?##' $(MAKEFILE_LIST) | \
-		awk 'BEGIN {FS = ":.*?## "}; {printf "  %-10s %s\n", $$1, $$2}'
+	@echo "build run all clean"
 
-build: $(CLASS) # Compile FlagOfNepal.java
+build: $(OUT)/flagofnepal/FlagOfNepal.class
 
-$(CLASS): $(SRC)
-	$(JAVAC) $(SRC)
+$(OUT)/flagofnepal/FlagOfNepal.class: $(SRC)
+	mkdir -p $(OUT) && $(JAVAC) -d $(OUT) $(SRC)
 
-run: build # Build flag SVGs + HTML into OUTDIR
-	$(JAVA) FlagOfNepal $(BASE) $(OUTDIR)
+run: build
+	$(JAVA) -cp $(OUT) flagofnepal.FlagOfNepal $(BASE) $(OUTDIR)
 
 all: run
 
 clean:
+	rm -rf $(OUT) bin
 	rm -f *.class
 	rm -rf $(OUTDIR)/*
 	touch $(OUTDIR)/.gitkeep

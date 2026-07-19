@@ -1,7 +1,6 @@
 """
-Constitutional geometry for the National Flag of Nepal.
-
-Implements Schedule 1, Article 8 of the Constitution of Nepal
+Author: Ashok Kumar Pant <asokpant@gmail.com>
+Date: July 19, 2026
 """
 
 from __future__ import annotations

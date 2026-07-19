@@ -1,3 +1,8 @@
+"""
+Author: Ashok Kumar Pant <asokpant@gmail.com>
+Date: July 19, 2026
+"""
+
 from __future__ import annotations
 
 import logging

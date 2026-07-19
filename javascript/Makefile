@@ -1,18 +1,23 @@
-NODE ?= node
-BASE ?= 800
-OUTDIR ?= output
+# National Flag of Nepal
 
-.PHONY: run all clean help
+NODE    ?= node
+BASE    ?= 800
+OUTDIR  ?= output
+
+.PHONY: help build run all clean
 
 help:
-	@echo "  run        Generate flag SVGs + HTML into OUTDIR"
-	@echo "  all        Alias for run"
-	@echo "  clean      Remove generated files in OUTDIR"
+	@echo "build run all clean"
+
+build:
+	@:
 
 run:
-	$(NODE) flag-of-nepal.mjs $(BASE) $(OUTDIR)
+	$(NODE) bin/flag-of-nepal.mjs $(BASE) $(OUTDIR)
 
 all: run
 
 clean:
-	rm -rf $(OUTDIR)/* && touch $(OUTDIR)/.gitkeep
+	rm -rf $(OUTDIR)/*
+	mkdir -p $(OUTDIR)
+	touch $(OUTDIR)/.gitkeep

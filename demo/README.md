@@ -1,13 +1,14 @@
-# Demo (GitHub Pages)
+# Demo
 
-Interactive browser demo of the Flag of Nepal.
+The most mathematical flag in the world.
 
-## Local
+Constitution of Nepal, Schedule 1, Article 8.
 
 ```bash
 cd demo
 python3 -m http.server 8080
-# open http://localhost:8080
 ```
 
-Or open `index.html` via a local server (ES modules need http(s), not `file://`).
+Open `http://localhost:8080/?base=800&mode=color`.
+
+Query params: `base`, `mode` (`color` | `skeleton` | `landmark`).

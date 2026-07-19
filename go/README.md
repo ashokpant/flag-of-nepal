@@ -1,10 +1,12 @@
 # National Flag of Nepal (Go)
 
-Pure Go construction of Nepal's national flag from the constitutional geometry (Schedule 1, Article 8). 
+The most mathematical flag in the world.
+
+Constitution of Nepal, Schedule 1, Article 8.
 
 ## Setup
 
-Go 1.18+.
+Go 1.21+.
 
 ```bash
 cd go
@@ -14,24 +16,19 @@ make run
 ## Usage
 
 ```bash
-make run              # base 800 → output/
+make run
 make run BASE=920
-make build            # compile to bin/flag-of-nepal
+make build
 make clean
 ```
 
-Or:
-
 ```bash
-go run . [baseLength] [outputDir]
+go run ./cmd/flag-of-nepal [baseLength] [outputDir]
 ```
 
-Writes:
+Package: `npflag`.
 
-- `np_flag_color.svg`
-- `np_flag_skeleton.svg`
-- `np_flag_landmark.svg`
-- `np_flag.html`
+Writes `np_flag_color.svg`, `np_flag_skeleton.svg`, `np_flag_landmark.svg`, and `np_flag.html`.
 
 ### Modes
 

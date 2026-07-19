@@ -1,4 +1,7 @@
-"""National Flag of Nepal — constitutional geometry."""
+"""
+Author: Ashok Kumar Pant <asokpant@gmail.com>
+Date: July 19, 2026
+"""
 
 from .geometry import FlagGeometry, construct_flag
 from .render import build_all, export_flag, render_html, render_svg

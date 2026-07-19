@@ -1,10 +1,5 @@
-// National Flag of Nepal — constitutional geometry (Schedule 1, Article 8).
-// Author: Ashok Pant <asokpant@gmail.com>
+// Author: Ashok Kumar Pant <asokpant@gmail.com>
 // Date: July 19, 2026
-// Uses: node flag-of-nepal.mjs [baseLength] [outputDir]
-
-import fs from "fs";
-import path from "path";
 
 const crimson = "#DC143C";
 const deepBlue = "#003893";
@@ -12,7 +7,7 @@ const white = "#FFFFFF";
 const ink = "#111111";
 const imaginary = "#888888";
 
-const modes = ["color", "skeleton", "landmark"];
+export const MODES = ["color", "skeleton", "landmark"];
 
 function dist(a, b) {
   return Math.hypot(b.x - a.x, b.y - a.y);
@@ -116,7 +111,7 @@ function circlePolygon(c, r, n) {
   return pts;
 }
 
-function construct(b) {
+export function construct(b) {
   const A = { x: 0, y: 0 };
   const B = { x: b, y: 0 };
   const C = { x: 0, y: b + b / 3 };
@@ -413,7 +408,7 @@ function writeArc(b, a, flip, color, width, dash) {
   b.push(s + " />\n");
 }
 
-function toSVG(g, mode) {
+export function toSVG(g, mode) {
   const { minX, minY, maxX, maxY } = bounds(g);
   const flip = maxY;
   const w = maxX - minX;
@@ -524,11 +519,11 @@ function toSVG(g, mode) {
   return parts.join("");
 }
 
-function toHTML(g) {
+export function toHTML(g) {
   const titles = ["Colour flag", "Skeleton", "Landmarks"];
   let body = "";
-  for (let i = 0; i < modes.length; i++) {
-    let svg = toSVG(g, modes[i]);
+  for (let i = 0; i < MODES.length; i++) {
+    let svg = toSVG(g, MODES[i]);
     if (svg.startsWith("<?xml")) {
       const idx = svg.indexOf("\n");
       if (idx >= 0) svg = svg.slice(idx + 1);
@@ -563,21 +558,17 @@ ${body}  </main>
 `;
 }
 
-const base = process.argv[2] !== undefined ? parseFloat(process.argv[2]) : 800;
-if (Number.isNaN(base)) {
-  console.error("invalid base length");
-  process.exit(1);
+export function renderFlag(baseLength = 800, mode = "color") {
+  let m = String(mode).toLowerCase();
+  if (m === "fillcolor" || m === "colour") m = "color";
+  if (m === "landmarks" || m === "alldrawings") m = "landmark";
+  if (!MODES.includes(m)) m = "color";
+  const base = Number(baseLength);
+  const g = construct(Number.isFinite(base) && base > 0 ? base : 800);
+  let svg = toSVG(g, m);
+  if (svg.startsWith("<?xml")) {
+    const idx = svg.indexOf("\n");
+    if (idx >= 0) svg = svg.slice(idx + 1);
+  }
+  return { svg, geom: g, mode: m };
 }
-const outDir = process.argv[3] ?? "output";
-
-fs.mkdirSync(outDir, { recursive: true });
-const g = construct(base);
-
-for (const mode of modes) {
-  const filePath = path.join(outDir, `np_flag_${mode}.svg`);
-  fs.writeFileSync(filePath, toSVG(g, mode), { mode: 0o644 });
-  console.log(filePath);
-}
-const htmlPath = path.join(outDir, "np_flag.html");
-fs.writeFileSync(htmlPath, toHTML(g), { mode: 0o644 });
-console.log(htmlPath);

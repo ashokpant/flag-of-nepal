@@ -1,4 +1,4 @@
-# National Flag of Nepal (Rust)
+# National Flag of Nepal
 
 CARGO   ?= cargo
 BASE    ?= 800
@@ -7,13 +7,12 @@ OUTDIR  ?= output
 .PHONY: help build run all clean
 
 help:
-	@grep -E '^[a-zA-Z_-]+:.*?##' $(MAKEFILE_LIST) | \
-		awk 'BEGIN {FS = ":.*?## "}; {printf "  %-10s %s\n", $$1, $$2}'
+	@echo "build run all clean"
 
 build:
 	$(CARGO) build --release
 
-run: ## Build flag SVGs + HTML into OUTDIR
+run:
 	$(CARGO) run --quiet -- $(BASE) $(OUTDIR)
 
 all: run

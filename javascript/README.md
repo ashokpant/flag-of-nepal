@@ -1,20 +1,40 @@
-# National Flag of Nepal (Node.js)
+# National Flag of Nepal (JavaScript)
 
-Pure Node.js construction of Nepal's national flag from constitutional geometry (Schedule 1, Article 8). No npm dependencies.
+The most mathematical flag in the world.
 
-## Usage
+Constitution of Nepal, Schedule 1, Article 8.
+
+## Setup
+
+Node.js 18+.
 
 ```bash
 cd javascript
 make run
 ```
 
-Or:
+## Usage
 
 ```bash
-node flag-of-nepal.mjs [baseLength] [outputDir]
+make run
+make run BASE=920
+make clean
 ```
 
-Defaults: base length `800`, output directory `output/`.
+```bash
+node bin/flag-of-nepal.mjs [baseLength] [outputDir]
+```
+
+```javascript
+import { construct, toSVG, toHTML, MODES } from "npflag";
+```
 
 Writes `np_flag_color.svg`, `np_flag_skeleton.svg`, `np_flag_landmark.svg`, and `np_flag.html`.
+
+### Modes
+
+| Mode | Description |
+|------|-------------|
+| `color` | Final coloured flag |
+| `skeleton` | Wireframe outline |
+| `landmark` | Labels and imaginary construction lines |

@@ -7,42 +7,44 @@ FORMAT  ?= svg
 OUTPUT  ?= output/np_flag_$(MODE)
 OUTDIR  ?= output
 
-.PHONY: help install sync flag html build all upgrade clean
+.PHONY: help install sync flag html build run all upgrade clean
 
 help:
-	@grep -E '^[a-zA-Z_-]+:.*?##' $(MAKEFILE_LIST) | \
-		awk 'BEGIN {FS = ":.*?## "}; {printf "  %-12s %s\n", $$1, $$2}'
+	@echo "install sync flag html build run all upgrade clean"
 
 install:
 	$(UV) sync
 
-flag: install ## Export one SVG (BASE, MODE, OUTPUT)
+sync: install
+
+flag: install
 	$(UV) run flag-of-nepal export \
 		--base-length $(BASE) \
 		--mode $(MODE) \
 		--format svg \
-		--output $(OUTPUT) \
-		-v
+		--output $(OUTPUT)
 
-html: install ## Export one HTML with all modes embedded
+html: install
 	$(UV) run flag-of-nepal export \
 		--base-length $(BASE) \
 		--format html \
-		--output output/np_flag \
-		-v
+		--output $(OUTDIR)/np_flag
 
-all: install ## Build all mode SVGs + multi-mode HTML
+build: install
 	$(UV) run flag-of-nepal build \
 		--base-length $(BASE) \
-		--output-dir $(OUTDIR) \
-		-v
-run: all
+		--output-dir $(OUTDIR)
+
+run: build
+
+all: build
 
 upgrade:
-	$(UV) run flag-of-nepal upgrade -v
+	$(UV) run flag-of-nepal upgrade
 
 clean:
-	rm -rf output/* dist/ build/
-	rm -rf .venv __pycache__ src/flag_of_nepal/__pycache__
+	rm -rf $(OUTDIR)/* dist/ build/
+	rm -rf .venv src/flag_of_nepal/__pycache__
 	rm -rf *.egg-info src/*.egg-info
-	touch output/.gitkeep
+	mkdir -p $(OUTDIR)
+	touch $(OUTDIR)/.gitkeep

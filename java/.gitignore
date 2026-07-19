@@ -1,5 +1,7 @@
 .classpath
 .project
 *.class
+bin/
+out/
 output/*
 !.gitkeep

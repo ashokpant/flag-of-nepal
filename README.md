@@ -15,23 +15,23 @@ The national flag of Nepal (Fig. 1) is the most mathematical and world's only no
 
 ## Implementations
 
+`make run` writes `np_flag_{color,skeleton,landmark}.svg` and `np_flag.html` (base length `800` by default).
+
 | Language | Path |
 |----------|------|
 | **MATLAB** | [matlab/](matlab/) |
 | **Python** | [python/](python/) |
 | **Java** | [java/](java/) |
-| **Go** | [go/](go/) |
-| **Rust** | [rust/](rust/) |
+| **Go** | [go/](go/) (`npflag`) |
+| **Rust** | [rust/](rust/) (`npflag`) |
 | **C++** | [cpp/](cpp/) |
-| **JavaScript** | [javascript/](javascript/) |
+| **JavaScript** | [javascript/](javascript/) (`npflag`) |
 
 See each folder's README for setup. Modes: `color`, `skeleton`, `landmark`.
 
-## Live demo (GitHub Pages)
+## Live demo
 
-Interactive UI (base length + mode) in **[demo/](demo/)**.
-
-See [demo/README.md](demo/README.md).
+**[demo/](demo/)** — base length and mode (`?base=800&mode=color`).
 
 ### Quick start (MATLAB)
 	>> cd matlab

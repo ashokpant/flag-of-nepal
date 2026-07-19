@@ -1,24 +1,14 @@
 function flagOfNepal(baseLength, drawingMode)
-%FLAGOFNEPAL  Draw the National Flag of Nepal from constitutional geometry.
-%
-%   Construction follows Schedule 1, Article 8 of the Constitution of Nepal.
+%FLAGOFNEPAL  National Flag of Nepal (Schedule 1, Article 8).
 %
 %   flagOfNepal()
 %   flagOfNepal(baseLength)
 %   flagOfNepal(baseLength, drawingMode)
 %
-%   baseLength   Length of base AB (default: 800).
-%   drawingMode  One of:
-%                  'color'     coloured flag (default)
-%                  'skeleton'  wireframe outline
-%                  'landmark'  labels + imaginary construction lines
-%   Examples
-%     flagOfNepal
-%     flagOfNepal(920)
-%     flagOfNepal(920, 'skeleton')
-%     flagOfNepal(920, 'landmark')
+%   drawingMode  'color' | 'skeleton' | 'landmark'  (default: color)
 %
 %   Author: Ashok Kumar Pant (asokpant@gmail.com)
+%   Date: July 19, 2026
 
     if nargin < 1 || isempty(baseLength)
         baseLength = 800;

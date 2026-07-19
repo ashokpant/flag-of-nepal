@@ -1,9 +1,12 @@
 [package]
-name = "flag-of-nepal"
+name = "npflag"
 version = "1.0.0"
 edition = "2024"
-description = "National Flag of Nepal from constitutional geometry"
 license = "MIT"
 publish = false
+
+[[bin]]
+name = "flag-of-nepal"
+path = "src/main.rs"
 
 [dependencies]

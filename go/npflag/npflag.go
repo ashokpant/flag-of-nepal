@@ -1,16 +1,11 @@
-// National Flag of Nepal — constitutional geometry (Schedule 1, Article 8).
-// Author: Ashok Pant <asokpant@gmail.com>
+// Author: Ashok Kumar Pant <asokpant@gmail.com>
 // Date: July 19, 2026
-// Uses:
-//	go run . [baseLength] [outputDir]
-package main
+
+package npflag
 
 import (
 	"fmt"
 	"math"
-	"os"
-	"path/filepath"
-	"strconv"
 	"strings"
 )
 
@@ -22,8 +17,7 @@ const (
 	imaginary = "#888888"
 )
 
-var modes = []string{"color", "skeleton", "landmark"}
-
+var Modes = []string{"color", "skeleton", "landmark"}
 type pt struct{ x, y float64 }
 
 type edge struct{ a, b pt }
@@ -33,7 +27,7 @@ type arc struct {
 	r, t0, dt float64
 }
 
-type geom struct {
+type Geom struct {
 	baseLength, borderWidth      float64
 	points                       map[string]pt
 	border, inner, moon, sun     []pt
@@ -42,7 +36,7 @@ type geom struct {
 	circles                      map[string][3]float64 // cx, cy, r
 }
 
-func (g *geom) bounds() (minX, minY, maxX, maxY float64) {
+func (g *Geom) bounds() (minX, minY, maxX, maxY float64) {
 	minX, minY = math.Inf(1), math.Inf(1)
 	maxX, maxY = math.Inf(-1), math.Inf(-1)
 	expand := func(p pt) {
@@ -149,7 +143,7 @@ func circlePolygon(c pt, r float64, n int) []pt {
 	return pts
 }
 
-func construct(b float64) *geom {
+func Construct(b float64) *Geom {
 	A := pt{0, 0}
 	B := pt{b, 0}
 	C := pt{0, b + b/3}
@@ -197,7 +191,7 @@ func construct(b float64) *geom {
 	po := circlePolygon(W, radiusWO, 48)
 
 	borderWidth := dist(T, N)
-	g := &geom{
+	g := &Geom{
 		baseLength:  b,
 		borderWidth: borderWidth,
 		points: map[string]pt{
@@ -317,7 +311,7 @@ func writeArc(b *strings.Builder, a arc, flip float64, color string, width float
 	b.WriteString(" />\n")
 }
 
-func toSVG(g *geom, mode string) string {
+func ToSVG(g *Geom, mode string) string {
 	minX, minY, maxX, maxY := g.bounds()
 	width, height := maxX-minX, maxY-minY
 	flip := maxY
@@ -363,7 +357,6 @@ func toSVG(g *geom, mode string) string {
 
 		if mode == "landmark" {
 			fs := g.baseLength * 0.035
-			// Stable label order
 			for _, name := range []string{
 				"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
 				"N", "O", "P", "Q", "R", "S", "T", "U", "V", "W",
@@ -392,11 +385,11 @@ func toSVG(g *geom, mode string) string {
 	return b.String()
 }
 
-func toHTML(g *geom) string {
+func ToHTML(g *Geom) string {
 	titles := []string{"Colour flag", "Skeleton", "Landmarks"}
 	var body strings.Builder
-	for i, mode := range modes {
-		svg := toSVG(g, mode)
+	for i, mode := range Modes {
+		svg := ToSVG(g, mode)
 		if strings.HasPrefix(svg, "<?xml") {
 			if idx := strings.IndexByte(svg, '\n'); idx >= 0 {
 				svg = svg[idx+1:]
@@ -432,40 +425,4 @@ func toHTML(g *geom) string {
 </body>
 </html>
 `
-}
-
-func main() {
-	base := 800.0
-	outDir := "output"
-	if len(os.Args) > 1 {
-		v, err := strconv.ParseFloat(os.Args[1], 64)
-		if err != nil {
-			fmt.Fprintln(os.Stderr, err)
-			os.Exit(1)
-		}
-		base = v
-	}
-	if len(os.Args) > 2 {
-		outDir = os.Args[2]
-	}
-	if err := os.MkdirAll(outDir, 0o755); err != nil {
-		fmt.Fprintln(os.Stderr, err)
-		os.Exit(1)
-	}
-
-	g := construct(base)
-	for _, mode := range modes {
-		path := filepath.Join(outDir, "np_flag_"+mode+".svg")
-		if err := os.WriteFile(path, []byte(toSVG(g, mode)), 0o644); err != nil {
-			fmt.Fprintln(os.Stderr, err)
-			os.Exit(1)
-		}
-		fmt.Println(path)
-	}
-	htmlPath := filepath.Join(outDir, "np_flag.html")
-	if err := os.WriteFile(htmlPath, []byte(toHTML(g)), 0o644); err != nil {
-		fmt.Fprintln(os.Stderr, err)
-		os.Exit(1)
-	}
-	fmt.Println(htmlPath)
 }

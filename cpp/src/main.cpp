@@ -1,8 +1,5 @@
-// National Flag of Nepal — constitutional geometry (Schedule 1, Article 8).
-// Author: Ashok Pant <asokpant@gmail.com>
+// Author: Ashok Kumar Pant <asokpant@gmail.com>
 // Date: July 19, 2026
-// Uses:
-//	./flag-of-nepal [baseLength] [outputDir]
 
 #include <algorithm>
 #include <array>

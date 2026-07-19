@@ -3,5 +3,5 @@
 version = 4
 
 [[package]]
-name = "flag-of-nepal"
+name = "npflag"
 version = "1.0.0"
