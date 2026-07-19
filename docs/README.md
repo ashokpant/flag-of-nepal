@@ -3,9 +3,8 @@
 The most mathematical flag in the world.
 
 Constitution of Nepal, Schedule 1, Article 8.
-
 ```bash
-cd demo
+cd docs
 python3 -m http.server 8080
 ```
 

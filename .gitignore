@@ -7,3 +7,4 @@ output/*
 !.gitkeep
 .python-version
 *.DS_Store
+.idea
