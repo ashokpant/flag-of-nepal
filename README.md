@@ -13,11 +13,11 @@ Update:      July 19, 2026
 
 The national flag of Nepal is the most mathematical and world's only non-quadrilateral flag. It consists of two juxtaposed triangular architecture with a white emblem of the crescent moon having eight rays visible out of sixteen in the upper triangle and a white emblem of a twelve-rayed sun in the lower triangle. The flag is bordered with a deep blue color representing the peace and harmony, and rectangles are filled with crimson red (the color of rhododendron- Nepal's national flower) representing the victory and bravery. The two triangles symbolized the Himalayan Mountains; the moon represents the serenity of the Nepalese people and the shade and cool weather in the Himalayas, while the sun stands for the fierce tenacity of the Nepalese people, and, the heat and higher temperatures of the lower parts of Nepal. The moon and the sun are also said to express the hope that the nation will endure as long as these heavenly bodies. This modern architecture of the flag was come into existence after December 16, 1962. Before that, the sun and the crescent moon had human faces.
 
-<p align="center">
+<p align="left">
 <img src="images/np_flag_color.png" alt="" width="400" />
 <img src="images/np_flag_skeleton.png" alt="" width="400" />
 </p>
-<p align="center">
+<p align="left">
 <img src="images/np_flag_landmark.png" alt="" width="400" />
 <img src="images/np_flag_alldrawings.gif" alt="" width="400" />
 </p>
