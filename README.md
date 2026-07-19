@@ -27,6 +27,12 @@ The national flag of Nepal (Fig. 1) is the most mathematical and world's only no
 
 See each folder's README for setup. Modes: `color`, `skeleton`, `landmark`.
 
+## Live demo (GitHub Pages)
+
+Interactive UI (base length + mode) in **[demo/](demo/)**.
+
+See [demo/README.md](demo/README.md).
+
 ### Quick start (MATLAB)
 	>> cd matlab
 	>> flagOfNepal

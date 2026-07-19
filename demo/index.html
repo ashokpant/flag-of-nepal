@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flag of Nepal — Demo</title>
+  <style>
+    :root {
+      --crimson: #DC143C;
+      --blue: #003893;
+      --ink: #1a1a1a;
+      --muted: #5c5c5c;
+      --paper: #f3efe8;
+      --card: #fffdf9;
+      --line: #d9d1c5;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 500px at 10% -10%, rgba(220, 20, 60, 0.08), transparent 55%),
+        radial-gradient(900px 400px at 100% 0%, rgba(0, 56, 147, 0.08), transparent 50%),
+        var(--paper);
+      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    }
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 3rem;
+    }
+    h1 {
+      margin: 0;
+      font-weight: 400;
+      font-size: clamp(1.75rem, 4vw, 2.35rem);
+      letter-spacing: 0.01em;
+    }
+    .lede {
+      margin: 0.5rem 0 1.5rem;
+      color: var(--muted);
+      max-width: 36rem;
+      line-height: 1.45;
+    }
+    .controls {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1.2fr 1fr;
+      margin-bottom: 1.25rem;
+      padding: 1rem 1.1rem;
+      background: var(--card);
+      border: 1px solid var(--line);
+    }
+    @media (max-width: 560px) {
+      .controls { grid-template-columns: 1fr; }
+    }
+    label {
+      display: block;
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+    .row {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+    }
+    input[type="number"] {
+      width: 5.5rem;
+      padding: 0.4rem 0.5rem;
+      border: 1px solid var(--line);
+      background: #fff;
+      font: inherit;
+      color: var(--ink);
+    }
+    input[type="range"] {
+      flex: 1;
+      accent-color: var(--blue);
+    }
+    .modes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .modes button {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      padding: 0.4rem 0.75rem;
+      cursor: pointer;
+    }
+    .modes button[aria-pressed="true"] {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+    }
+    .stage {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 1.25rem;
+      min-height: 12rem;
+    }
+    .stage svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .meta {
+      margin-top: 0.85rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    footer {
+      margin-top: 1.5rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+    footer a { color: var(--blue); }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Flag of Nepal</h1>
+    <p class="lede">
+     The most mathematical flag in the world!
+    </p>
+
+    <div class="controls">
+      <div>
+        <label for="base">Base length (AB)</label>
+        <div class="row">
+          <input id="base" type="number" min="100" max="2000" step="10" value="800" />
+          <input id="base-range" type="range" min="100" max="2000" step="10" value="800" />
+        </div>
+      </div>
+      <div>
+        <label>Mode</label>
+        <div class="modes" role="group" aria-label="Drawing mode">
+          <button type="button" data-mode="color" aria-pressed="true">Colour</button>
+          <button type="button" data-mode="skeleton" aria-pressed="false">Skeleton</button>
+          <button type="button" data-mode="landmark" aria-pressed="false">Landmark</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage" id="stage" aria-live="polite"></div>
+    <p class="meta" id="meta"></p>
+
+    <footer>
+      Schedule 1, Article 8 ·
+      Works on <a href="https://pages.github.com/">GitHub Pages</a>
+      (Settings → Pages → deploy from branch, folder <code>/demo</code> or site root).
+      Share with <code>?base=800&amp;mode=landmark</code>.
+    </footer>
+  </main>
+
+  <script type="module">
+    import { renderFlag, MODES } from "./flag.js";
+
+    const baseInput = document.getElementById("base");
+    const baseRange = document.getElementById("base-range");
+    const stage = document.getElementById("stage");
+    const meta = document.getElementById("meta");
+    const modeButtons = [...document.querySelectorAll(".modes button")];
+
+    function readParams() {
+      const q = new URLSearchParams(location.search);
+      const base = Number(q.get("base"));
+      let mode = (q.get("mode") || "color").toLowerCase();
+      if (!MODES.includes(mode)) mode = "color";
+      return {
+        base: Number.isFinite(base) && base >= 100 ? base : 800,
+        mode,
+      };
+    }
+
+    function writeParams(base, mode) {
+      const url = new URL(location.href);
+      url.searchParams.set("base", String(Math.round(base)));
+      url.searchParams.set("mode", mode);
+      history.replaceState(null, "", url);
+    }
+
+    let mode = "color";
+
+    function setMode(next) {
+      mode = next;
+      modeButtons.forEach((btn) => {
+        btn.setAttribute("aria-pressed", btn.dataset.mode === mode ? "true" : "false");
+      });
+    }
+
+    function render() {
+      const base = Number(baseInput.value) || 800;
+      baseRange.value = String(base);
+      const { svg, geom, mode: m } = renderFlag(base, mode);
+      stage.innerHTML = svg;
+      meta.textContent =
+        `AB = ${geom.baseLength.toFixed(0)} · TN = ${geom.borderWidth.toFixed(4)} · mode = ${m}`;
+      writeParams(geom.baseLength, m);
+    }
+
+    const initial = readParams();
+    baseInput.value = String(initial.base);
+    baseRange.value = String(initial.base);
+    setMode(initial.mode);
+
+    baseInput.addEventListener("input", render);
+    baseRange.addEventListener("input", () => {
+      baseInput.value = baseRange.value;
+      render();
+    });
+    modeButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        setMode(btn.dataset.mode);
+        render();
+      });
+    });
+
+    render();
+  </script>
+</body>
+</html>
