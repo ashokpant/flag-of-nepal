@@ -40,9 +40,8 @@ See each folder's README for setup. Modes: `color`, `skeleton`, `landmark`.
 
 ## Live demo
 
-** View live demo [here](https://ashokpant.github.io/flag-of-nepal/)**.
+**View live demo [here](https://ashokpant.github.io/flag-of-nepal/)**
 
-Settings → Pages → Deploy from branch → folder **/docs**.
 
 ### Quick start (MATLAB)
 
