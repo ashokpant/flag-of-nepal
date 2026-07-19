@@ -187,7 +187,7 @@ def render_html(geom: FlagGeometry, mode: str = "color") -> str:
         svg = _inline_svg(render_svg(geom, m))
         sections.append(
             f'    <section class="flag">\n'
-            f"      <h2>{escape(MODE_TITLES[m])} <span>({escape(m)})</span></h2>\n"
+            f"      <h2>{escape(MODE_TITLES[m])}</h2>\n"
             f"{svg}\n"
             f"    </section>"
         )
@@ -219,7 +219,6 @@ def render_html(geom: FlagGeometry, mode: str = "color") -> str:
       font-size: 1.15rem;
       margin: 0 0 1rem;
     }}
-    .flag h2 span {{ color: #777; font-size: 0.9rem; }}
     .flag svg {{ width: 100%; height: auto; display: block; }}
   </style>
 </head>

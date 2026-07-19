@@ -15,12 +15,13 @@ The national flag of Nepal (Fig. 1) is the most mathematical and world's only no
 
 ## Implementations
 
-| Language | Path 
-|----------|----------
-| **MATLAB** | [matlab/]
-| **Python** | [python/]
+| Language | Path |
+|----------|------|
+| **MATLAB** | [matlab/](matlab/) |
+| **Python** | [python/](python/) |
+| **Java** | [java/](java/) |
 
-See **[matlab/README.md](matlab/README.md)** and **[python/README.md](python/README.md)** for setup and usage. Modes in both: `color`, `skeleton`, `landmark`.
+See each folder's README for setup. Modes: `color`, `skeleton`, `landmark`.
 
 ### Quick start (MATLAB)
 	>> cd matlab
@@ -30,6 +31,9 @@ See **[matlab/README.md](matlab/README.md)** and **[python/README.md](python/REA
 
 ### Quick start (Python)
 	$ cd python && make build
+
+### Quick start (Java)
+	$ cd java && make run
 
 ![Fig.1 The national flag of Nepal.](https://github.com/ashokpant/flag-of-nepal/blob/master/images/flag_of_nepal.png)
 
