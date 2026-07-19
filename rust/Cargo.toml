@@ -1,0 +1,9 @@
+[package]
+name = "flag-of-nepal"
+version = "1.0.0"
+edition = "2024"
+description = "National Flag of Nepal from constitutional geometry"
+license = "MIT"
+publish = false
+
+[dependencies]
