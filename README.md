@@ -40,7 +40,7 @@ See each folder's README for setup. Modes: `color`, `skeleton`, `landmark`.
 
 ## Live demo
 
-** View live demo [demo](https://ashokpant.github.io/flag-of-nepal/) (`?base=800&mode=color`).
+** View live demo [here](https://ashokpant.github.io/flag-of-nepal/)**.
 
 Settings → Pages → Deploy from branch → folder **/docs**.
 
