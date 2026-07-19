@@ -36,6 +36,7 @@ all: install ## Build all mode SVGs + multi-mode HTML
 		--base-length $(BASE) \
 		--output-dir $(OUTDIR) \
 		-v
+run: all
 
 upgrade:
 	$(UV) run flag-of-nepal upgrade -v

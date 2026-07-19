@@ -30,7 +30,7 @@ See each folder's README for setup. Modes: `color`, `skeleton`, `landmark`.
 	>> flagOfNepal(920, 'landmark')
 
 ### Quick start (Python)
-	$ cd python && make build
+	$ cd python && make run
 
 ### Quick start (Java)
 	$ cd java && make run
