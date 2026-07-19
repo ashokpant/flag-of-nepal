@@ -40,7 +40,7 @@ See each folder's README for setup. Modes: `color`, `skeleton`, `landmark`.
 
 ## Live demo
 
-**View live demo [here](https://ashokpant.github.io/flag-of-nepal/)**
+<strong>View live demo <a href="https://ashokpant.github.io/flag-of-nepal/" target="_blank" rel="noopener noreferrer">here</a></strong>
 
 
 ### Quick start (MATLAB)
