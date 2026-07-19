@@ -21,6 +21,9 @@ The national flag of Nepal (Fig. 1) is the most mathematical and world's only no
 | **Python** | [python/](python/) |
 | **Java** | [java/](java/) |
 | **Go** | [go/](go/) |
+| **Rust** | [rust/](rust/) |
+| **C++** | [cpp/](cpp/) |
+| **JavaScript** | [javascript/](javascript/) |
 
 See each folder's README for setup. Modes: `color`, `skeleton`, `landmark`.
 
@@ -38,6 +41,15 @@ See each folder's README for setup. Modes: `color`, `skeleton`, `landmark`.
 
 ### Quick start (Go)
 	$ cd go && make run
+
+### Quick start (Rust)
+	$ cd rust && make run
+
+### Quick start (C++)
+	$ cd cpp && make run
+
+### Quick start (JavaScript)
+	$ cd javascript && make run
 
 ![Fig.1 The national flag of Nepal.](https://github.com/ashokpant/flag-of-nepal/blob/master/images/flag_of_nepal.png)
 
