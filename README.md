@@ -16,12 +16,10 @@ The national flag of Nepal is the most mathematical and world's only non-quadril
 <table>
 <tr>
 <td><img src="images/np_flag_color.png" alt="" width="400" /></td>
-<td width="50"></td>
 <td><img src="images/np_flag_skeleton.png" alt="" width="400" /></td>
 </tr>
 <tr>
 <td><img src="images/np_flag_landmark.png" alt="" width="400" /></td>
-<td width="50"></td>
 <td><img src="images/np_flag_alldrawings.gif" alt="" width="400" /></td>
 </tr>
 </table>
